@@ -1,4 +1,4 @@
-use actix_web::{get, post, HttpResponse, Responder, App, HttpServer, web};
+use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -8,9 +8,9 @@ async fn main() -> std::io::Result<()> {
             .service(echo)
             .route("/hey", web::get().to(manual_hello))
     })
-        .bind("127.0.0.1:8080")?
-        .run()
-        .await
+    .bind("127.0.0.1:8080")?
+    .run()
+    .await
 }
 
 #[get("/")]
